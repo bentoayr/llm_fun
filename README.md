@@ -1,5 +1,5 @@
-Evolving a prompt to evolve prompts.
-Does it converge? Diverge?
+## Evolving a prompt to evolve prompts.
+## Does it converge? Diverge?
 
 You can run some scripts live:
 
