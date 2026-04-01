@@ -1,0 +1,220 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 14.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[      8125,        210]
+NotebookOptionsPosition[      6405,        177]
+NotebookOutlinePosition[      6893,        195]
+CellTagsIndexPosition[      6850,        192]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"Main", " ", "function"}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"CallLLMWithPromptTemplate", "[", 
+     RowBox[{"promptTemplate_String", ",", "inputPrompt_String"}], "]"}], ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", "fullPrompt", "}"}], ",", 
+      RowBox[{
+       RowBox[{"fullPrompt", "=", 
+        RowBox[{"TemplateApply", "[", 
+         RowBox[{
+          RowBox[{"StringTemplate", "[", "promptTemplate", "]"}], ",", 
+          RowBox[{"<|", 
+           RowBox[{"\"\<input\>\"", "->", "inputPrompt"}], "|>"}]}], "]"}]}], 
+       ";", "\[IndentingNewLine]", 
+       RowBox[{"LLMSynthesize", "[", "fullPrompt", "]"}]}]}], "]"}]}], 
+   "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{3.9840466045000896`*^9, 3.984046643031494*^9}, {
+  3.984046735704401*^9, 3.984046742005867*^9}, {3.9840468202586393`*^9, 
+  3.984046839433032*^9}, {3.98404698342164*^9, 
+  3.984046997585218*^9}},ExpressionUUID->"437adea5-ddbb-4ea0-8090-\
+42abf77a2bb9"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"Simple", " ", "test"}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+    "prompt1", 
+     "=", "\"\<Summarize the following text in one sentence: `input`\>\""}], 
+    ";"}], "\n", 
+   RowBox[{
+    RowBox[{
+    "prompt2", 
+     "=", "\"\<Mathematica is a symbolic computation system developed by \
+Wolfram.\>\""}], ";"}], "\[IndentingNewLine]", "\n", 
+   RowBox[{"CallLLMWithPromptTemplate", "[", 
+    RowBox[{"prompt1", ",", "prompt2"}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.984047000137053*^9, 
+  3.984047006300742*^9}},ExpressionUUID->"04488181-5280-46ee-970e-\
+418a053880df"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"Some", " ", "fun"}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+   "prompt1", " ", "=", 
+    " ", "\"\<Improve the following prompt: `input`. The output should just \
+have the improved prompt. Nothing else. No comments, nothing.\>\""}], 
+   ";"}]}]], "Input",
+ CellChangeTimes->{{3.984046673299163*^9, 3.984046705376233*^9}, {
+  3.984046878417836*^9, 3.984046910747795*^9}, {3.984047010243232*^9, 
+  3.984047016692832*^9}},ExpressionUUID->"5adec7f3-ed5c-41b0-bcff-\
+25ae75e14bc0"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"For", "[", 
+  RowBox[{
+   RowBox[{"i", " ", "=", "1"}], ",", 
+   RowBox[{"i", "<=", "10"}], ",", 
+   RowBox[{"i", "++"}], ",", 
+   RowBox[{"Print", "[", 
+    RowBox[{"CallLLMWithPromptTemplate", "[", 
+     RowBox[{"prompt1", ",", "prompt1"}], "]"}], "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.9840470396267233`*^9, 3.98404706637502*^9}},
+ CellLabel->"In[47]:=",ExpressionUUID->"8db653c9-4d7b-401b-81a1-6ae3452419a6"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["\<\"Revise the following prompt: `input`. Please provide only \
+the enhanced prompt in your response. No additional comments or explanations \
+are needed.\"\>"], "Print",
+ CellChangeTimes->{3.984047070011611*^9},
+ CellLabel->
+  "During evaluation of \
+In[47]:=",ExpressionUUID->"fbfe82c6-977b-4e54-b082-2ab999c44ffb"],
+
+Cell[BoxData["\<\"Enhance the following input: `input`. Please provide the \
+improved version only, without any additional comments or \
+explanations.\"\>"], "Print",
+ CellChangeTimes->{3.984047071712446*^9},
+ CellLabel->
+  "During evaluation of \
+In[47]:=",ExpressionUUID->"d8747c55-b2d2-439b-8a94-e3b80781d0e0"],
+
+Cell[BoxData["\<\"Refine the following prompt: `input`. The output should \
+consist only of the revised prompt. Please refrain from adding any comments \
+or additional content.\"\>"], "Print",
+ CellChangeTimes->{3.984047073412064*^9},
+ CellLabel->
+  "During evaluation of \
+In[47]:=",ExpressionUUID->"9c7c1f20-a1ec-4ffb-b45f-b0b1754c684a"],
+
+Cell[BoxData["\<\"Revise the provided prompt: `input`. Please ensure that the \
+output contains only the enhanced prompt, without any additional comments or \
+information.\"\>"], "Print",
+ CellChangeTimes->{3.984047075971689*^9},
+ CellLabel->
+  "During evaluation of \
+In[47]:=",ExpressionUUID->"c5d8acad-b7bd-4807-b0d1-981daec4a642"],
+
+Cell[BoxData["\<\"Enhance the following prompt: `input`.\"\>"], "Print",
+ CellChangeTimes->{3.9840470776944942`*^9},
+ CellLabel->
+  "During evaluation of \
+In[47]:=",ExpressionUUID->"c7baaa80-fead-4193-be32-d7cea0b749ad"],
+
+Cell[BoxData["\<\"Please enhance the following prompt: `input`.\"\>"], "Print",
+ CellChangeTimes->{3.984047078847454*^9},
+ CellLabel->
+  "During evaluation of \
+In[47]:=",ExpressionUUID->"68279601-31eb-4de1-80df-da8bf2a573e1"],
+
+Cell[BoxData["\<\"Revise the prompt: `input`. The output should consist \
+solely of the revised prompt, without any additional comments or information.\
+\"\>"], "Print",
+ CellChangeTimes->{3.9840470804512873`*^9},
+ CellLabel->
+  "During evaluation of \
+In[47]:=",ExpressionUUID->"119debfb-c03d-433f-8af5-2a8ab4d7e601"],
+
+Cell[BoxData["\<\"Refine the following prompt: `input`. Please provide the \
+enhanced version without any additional comments or explanations.\"\>"], \
+"Print",
+ CellChangeTimes->{3.984047081928832*^9},
+ CellLabel->
+  "During evaluation of \
+In[47]:=",ExpressionUUID->"a1ea4b08-dd22-4b25-88f9-735d333841d7"],
+
+Cell[BoxData["\<\"Enhance the following prompt: `input`. Provide only the \
+refined prompt in your response, without any additional comments or \
+explanations.\"\>"], "Print",
+ CellChangeTimes->{3.984047083025063*^9},
+ CellLabel->
+  "During evaluation of \
+In[47]:=",ExpressionUUID->"85b70dc2-b428-4f00-b10a-4a53c61d1e17"],
+
+Cell[BoxData["\<\"Revise the following prompt: `input`. Please ensure the \
+output contains only the revised prompt, with no additional comments or \
+explanations.\"\>"], "Print",
+ CellChangeTimes->{3.984047084105439*^9},
+ CellLabel->
+  "During evaluation of \
+In[47]:=",ExpressionUUID->"f1bda155-480c-4aec-9201-3d693e713335"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{808, 911},
+WindowMargins->{{4, Automatic}, {Automatic, 4}},
+PrivateNotebookOptions->{"CloudPublishPath"->"/Published/some_fun_with_\
+recursion_and_llms.nb"},
+FrontEndVersion->"14.3 for Mac OS X ARM (64-bit) (July 8, 2025)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"c6980004-78e9-4275-92a2-d20e0d1fc15e"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[554, 20, 1053, 25, 131, "Input",ExpressionUUID->"437adea5-ddbb-4ea0-8090-42abf77a2bb9"],
+Cell[1610, 47, 660, 19, 111, "Input",ExpressionUUID->"04488181-5280-46ee-970e-418a053880df"],
+Cell[2273, 68, 545, 13, 90, "Input",ExpressionUUID->"5adec7f3-ed5c-41b0-bcff-25ae75e14bc0"],
+Cell[CellGroupData[{
+Cell[2843, 85, 445, 10, 29, "Input",ExpressionUUID->"8db653c9-4d7b-401b-81a1-6ae3452419a6"],
+Cell[CellGroupData[{
+Cell[3313, 99, 331, 6, 41, "Print",ExpressionUUID->"fbfe82c6-977b-4e54-b082-2ab999c44ffb"],
+Cell[3647, 107, 313, 6, 41, "Print",ExpressionUUID->"d8747c55-b2d2-439b-8a94-e3b80781d0e0"],
+Cell[3963, 115, 339, 6, 41, "Print",ExpressionUUID->"9c7c1f20-a1ec-4ffb-b45f-b0b1754c684a"],
+Cell[4305, 123, 334, 6, 41, "Print",ExpressionUUID->"c5d8acad-b7bd-4807-b0d1-981daec4a642"],
+Cell[4642, 131, 221, 4, 23, "Print",ExpressionUUID->"c7baaa80-fead-4193-be32-d7cea0b749ad"],
+Cell[4866, 137, 226, 4, 23, "Print",ExpressionUUID->"68279601-31eb-4de1-80df-da8bf2a573e1"],
+Cell[5095, 143, 318, 6, 41, "Print",ExpressionUUID->"119debfb-c03d-433f-8af5-2a8ab4d7e601"],
+Cell[5416, 151, 307, 6, 41, "Print",ExpressionUUID->"a1ea4b08-dd22-4b25-88f9-735d333841d7"],
+Cell[5726, 159, 322, 6, 41, "Print",ExpressionUUID->"85b70dc2-b428-4f00-b10a-4a53c61d1e17"],
+Cell[6051, 167, 326, 6, 41, "Print",ExpressionUUID->"f1bda155-480c-4aec-9201-3d693e713335"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
